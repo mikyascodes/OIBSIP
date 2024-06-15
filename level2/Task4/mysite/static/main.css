@@ -1,0 +1,114 @@
+* {
+  box-sizing: border-box;
+  font-family: "Puritan", sans-serif;
+}
+
+@keyframes slideFromRight {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideFromBottom {
+  0% {
+    transform: translateY(100%);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+div.welcome {
+  background-image: url("../media/boy.png");
+  background-repeat: no-repeat;
+  background-size: 25%;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+.signup {
+  animation-name: slideFromRight;
+  animation-duration: 2s;
+}
+
+.login {
+  animation-name: slideFromBottom;
+  animation-duration: 2s;
+}
+
+/* Base button styles */
+.signup,
+.login {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 4px 4px 10px 5px rgb(0, 0, 0, 0.5);
+}
+
+/* Shiny effect */
+.signup::before,
+.login::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle closest-side, rgba(255, 255, 255, 0.2), transparent);
+  transition: transform 0.5s;
+  pointer-events: none;
+}
+
+.signup:hover::before,
+.login:hover::before {
+  transform: translate(-25%, -25%);
+}
+
+.reg-form-wrapper {
+  max-width: 500px;
+}
+
+.log-form-wrapper {
+  width: 100%;
+  max-width: 400px;
+}
+
+.cover-photo {
+  height: 40vh;
+  width: 100%;
+  object-fit: cover;
+}
+
+.log-in-avatar,
+.avatar {
+  border-radius: 100%;
+  object-fit: cover;
+}
+
+.log-in-avatar {
+  width: 75px;
+  height: 75px;
+}
+
+.avatar {
+  width: 150px;
+  height: 150px;
+}
+
+.navigation {
+  z-index: 1;
+  row-gap: 20px;
+}
+
+.position-absolute {
+  text-align: center;
+}

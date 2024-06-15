@@ -1,0 +1,158 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+{% include "deleted_message.html" %}
+{% comment %} Button trigger modal {% endcomment %}
+<div class="container-fluid">
+  <div class="row p-lg-4">
+    <div class="col-lg-8 offset-lg-2">
+      <button type="button" class="btn btn-primary mx-auto d-block" data-bs-toggle="modal"
+        data-bs-target="#staticBackdrop">
+        Create Task
+      </button>
+    </div>
+    <div class="col-lg-4 offset-lg-4 mt-5 fw-bold fs-4 text-white">
+      <img src="../media/5059486.webp" alt="todoillustration">
+      <p>Hey there! Ready to tackle your day? Dive in and start organizing your tasks effortlessly. Let's make today
+        productive and stress-free!</p>
+    </div>
+    {% comment %} All Tasks Accordion {% endcomment %}
+    <div class="col-lg-8 offset-lg-2 mt-5">
+      <div class="accordion" id="allTasksAccordion">
+        {% for task in all_tasks %}
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingAll{{ task.id }}">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#collapseAll{{ task.id }}" aria-expanded="false" aria-controls="collapseAll{{ task.id }}">
+              {{ task.title }}
+              {% if task.completed %}
+              <span class="badge bg-dark ms-2">Completed</span>
+              {% else %}
+              <span class="badge bg-dark ms-2">Pending</span>
+              {% endif %}
+            </button>
+          </h2>
+          <div id="collapseAll{{ task.id }}" class="accordion-collapse collapse"
+            aria-labelledby="headingAll{{ task.id }}" data-bs-parent="#allTasksAccordion">
+            <div class="accordion-body">
+              <strong>Description:</strong> {{ task.description }}<br>
+              <strong>Start Date:</strong> {{ task.start_date }}<br>
+              <strong>End Date:</strong> {{ task.end_date }}<br>
+              {% if task.completed %}
+              <strong>Completion Date:</strong> <span style="font-size: 1.25em;">{{ task.completion_date }}</span><br>
+              {% endif %}
+              <div class="d-flex align-items-center py-2">
+                {% if not task.completed %}
+                <button type="button" class="btn btn-sm btn-primary me-2" data-bs-toggle="modal"
+                  data-bs-target="#editTaskModal">
+                  <a href="{% url 'edit_task' task.id %}" class="text-decoration-none text-white">Edit</a>
+                </button>
+                {% endif %}
+                <form action="{% url 'delete_task' task.id %}" method="post" class="d-inline">
+                  {% csrf_token %}
+                  <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  {% comment %} Pending Tasks Accordion {% endcomment %}
+  <div class="row p-lg-4">
+    <div class="col-lg-3 mt-5 fw-bold text-white">
+      <img src="../media/alarm_clock.png" alt="alarmclockillustration">
+      <p>Don't forget! A few tasks are waiting for your attention. Taking care of them now will free up your mind and
+        help you stay on top of things.</p>
+    </div>
+    <div class="col-lg-6 offset-lg-3 mt-lg-5">
+      <h2 class="text-white">Pending Tasks</h2>
+      <div class="accordion" id="pendingTasksAccordion">
+        {% for task in pending_tasks %}
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="heading{{ task.id }}">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#collapsePending{{ task.id }}" aria-expanded="false"
+              aria-controls="collapsePending{{ task.id }}">
+              {{ task.title }}
+            </button>
+          </h2>
+          <div id="collapsePending{{ task.id }}" class="accordion-collapse collapse"
+            aria-labelledby="heading{{ task.id }}" data-bs-parent="#pendingTasksAccordion">
+            <div class="accordion-body">
+              <strong>Description:</strong> {{ task.description }}<br>
+              <strong>Start Date:</strong> {{ task.start_date }}<br>
+              <strong>End Date:</strong> {{ task.end_date }}<br>
+              <form method="post" action="{% url 'task_page' %}">
+                {% csrf_token %}
+                <input type="hidden" name="task_id" value="{{ task.id }}">
+                <button type="submit" class="btn btn-success mt-2">Mark as Completed</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  {% comment %} Completed Tasks Accordion {% endcomment %}
+  <div class="row p-lg-4">
+    <div class="col-lg-6 order-lg-1 mt-lg-5 order-md-2 order-2">
+      <h2 class="text-white">Completed Tasks</h2>
+      <div class="accordion" id="completedTasksAccordion">
+        {% for task in completed_tasks %}
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingCompleted{{ task.id }}">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#collapseCompleted{{ task.id }}" aria-expanded="false"
+              aria-controls="collapseCompleted{{ task.id }}">
+              {{ task.title }}
+            </button>
+          </h2>
+          <div id="collapseCompleted{{ task.id }}" class="accordion-collapse collapse"
+            aria-labelledby="headingCompleted{{ task.id }}" data-bs-parent="#completedTasksAccordion">
+            <div class="accordion-body">
+              <strong>Description:</strong> {{ task.description }}<br>
+              <strong>Start Date:</strong> {{ task.start_date }}<br>
+              <strong>End Date:</strong> {{ task.end_date }}<br>
+              <strong>Completion Date:</strong> <span style="font-size: 1.25em;">{{ task.completion_date }}</span><br>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="col-lg-3 offset-lg-3 mt-5 fw-bold text-white order-lg-2 order-md-1 order-1">
+      <img src="../media/motivation.png" alt="motivationillustration">
+      <p>Awesome work! You completed this tasks! It must feel good, right? Why not tackle another task and keep the
+        momentum going?</p>
+    </div>
+  </div>
+
+  {% comment %} modal {% endcomment %}
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">
+            Create your task
+          </h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="createTaskForm" method="post" action="{% url 'create_task' %}">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <button type="submit" class="btn btn-primary">Save</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

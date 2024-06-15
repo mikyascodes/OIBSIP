@@ -1,0 +1,12 @@
+{% extends "base.html" %} {% load crispy_forms_tags %} {% block content %}
+<div class="welcome">
+<div class="d-flex flex-column justify-content-start align-items-start row-gap-2 vh-100">
+  <a href={% url 'register' %}><button class="bg-secondary text-white fs-1 fw-medium signup">
+    Signup
+  </button></a>
+  <a href={% url 'login' %}><button class="bg-secondary text-white fs-1 fw-medium login">
+    Login
+  </button></a>
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,105 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(to right, black 5%, #5378ac 100%);
+  background-size: cover;
+  overflow-x: hidden;
+}
+
+@keyframes logoAnimation {
+  from {
+    transform: rotate(0deg);
+    opacity: 0;
+  }
+
+  to {
+    transform: rotate(360deg);
+    opacity: 1;
+  }
+}
+
+@keyframes titleAnimation {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+
+  50% {
+    transform: translateX(-50%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0);
+    transform: scale(150%);
+    opacity: 1;
+  }
+}
+
+h2 {
+  font-family: "Permanent Marker";
+  color: azure;
+}
+
+img {
+  width: 4rem;
+  height: 4rem;
+  animation: logoAnimation 2s 2s forwards;
+}
+
+div.animation {
+  animation: titleAnimation 2s forwards;
+}
+
+.custom-container {
+  max-width: 700px;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid rgb(20, 7, 7);
+  box-shadow: 10px 10px 5px 0px rgba(128, 116, 128, 1);
+  grid-gap: 15px;
+}
+
+.display {
+  text-align: right;
+  font-size: 2rem;
+}
+
+.btn-sz {
+  width: 35px;
+  height: 35px;
+  text-align: center;
+  padding: 0;
+}
+
+.btn-sz-lg {
+  width: 50px;
+  height: 35px;
+  text-align: center;
+}
+
+body.light-mode {
+  background-color: white;
+  background: none;
+}
+
+h2.light-mode {
+  font-family: "Permanent Marker";
+  color: black;
+}
+
+.light-mode.custom-container {
+  background-color: rgb(190, 226, 224) !important;
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75) !important;
+  border: none !important;
+}
+
+.light-mode.btn-sz {
+  background-color: rgb(88, 209, 201) !important;
+}
+
+.light-mode.btn-sz-lg {
+  background-color: rgb(63, 114, 111) !important;
+}

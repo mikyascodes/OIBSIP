@@ -1,0 +1,16 @@
+* {
+    box-sizing: border-box;
+}
+
+.alert {
+    z-index: 1;
+}
+
+img{
+   width:150px;
+   height:150px; 
+}
+
+p, h2{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow';
+}

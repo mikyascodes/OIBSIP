@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<!-- Cover Photo -->
+<img src="../media/cover_photo.jpg" class="cover-photo" alt="Cover Photo">
+
+<!-- Navigation Section -->
+<div class="navigation vh-100 bg-dark position-absolute top-0 end-0 d-flex justify-content-center align-items-center flex-column z-1 p-2">
+    {% if user.is_authenticated %}
+        <img class="log-in-avatar" src="{{ site_user.avatar.url }}" alt="Avatar">
+        <a href="{% url 'logout' %}" class="text-white fs-5 text-decoration-none border-top fw-bold">Logout</a>
+    {% endif %}
+</div>
+
+<!-- site_user Info Section -->
+<div class="position-absolute top-50 start-50 translate-middle w-50 d-flex flex-column justify-content-start align-items-center text-info-emphasis text-center fs-3 fw-bold ">
+    {% if user.is_authenticated %}
+        <img class="avatar w-25 h-25 border-2" src="{{ site_user.avatar.url }}" alt="Avatar">
+        <h2>{{ site_user.first_name }} {{ site_user.last_name }}</h2>
+        <span>@{{ site_user.username }}</span>
+        <span>{{ site_user.email }}</span>
+        <span>Born: {{ site_user.birth_date|date:"F j, Y"  }}</span>
+        <span>Joined: {{ site_user.date_joined|date:"F j, Y" }}</span>
+        <div class="d-flex justify-content-between column-gap-4 mt-4">
+            <i class="fab fa-facebook fa-2x"></i>
+            <i class="fab fa-twitter fa-2x"></i>
+            <i class="fab fa-telegram fa-2x"></i>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
