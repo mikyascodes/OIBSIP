@@ -1,12 +1,5 @@
 # OIBSIP
 Oisis InfoByte web development and design internship
-## Level 2
-### Task 1
-For this task, I built a JavaScript calculator using HTML, CSS, and JavaScript. The calculator includes basic operations as well as advanced functions such as logarithmic and trigonometric functionalities. It has both day and night modes, allowing the user to switch between modes. Additionally, by hitting the settings button, a user can switch between different button configurations on the calculator. The layout was primarily created using Bootstrap.
-![calculator-demo](C:\Users\Mikyas\Pictures\Screenshots\Screenshot(7).png)
-
-# OIBSIP
-Oisis InfoByte web development and design internship
 ## Level 2  🔥🎚️ 
 ### Task 1 ✅
 For this task, I built a JavaScript calculator using HTML, CSS, and JavaScript. The calculator includes basic operations as well as advanced functions such as logarithmic and trigonometric functionalities. It has both day and night modes, allowing the user to switch between modes. Additionally, by hitting the settings button, a user can switch between different button configurations on the calculator. The layout was primarily created using Bootstrap.
@@ -27,22 +20,22 @@ In this last task, we were tasked with implementing a simple user authentication
 ![authentication-demo](C:\Users\Mikyas\Pictures\Screenshots\Screenshot (1).png)
 
 <h3 style="text-decoration: underline;">⚙️How to run the Django(python) projects</h3>
-1. Clone the repository 
+1.Clone the repository 
     git clone https://github.com/mikyascodes/OIBSIP.git
-2. Change directory to either Task3/project_name or Task4/project_name folder which ever one project you are trying to run.  
-3. Install virtual environment by running these commnds:
+2.Change directory to either Task3/project_name or Task4/project_name folder which ever one project you are trying to run.  
+3.Install virtual environment by running these commnds:
     -pip install virtualenv
     -virtualenv env
     -env\Scripts\activate.bat
-4. Once the virtual enviroment is installed and activated, install the project requirements using this command:
+4.Once the virtual enviroment is installed and activated, install the project requirements using this command:
     -pip install -r requirements.txt
-5. Then migrate the database using these commands:
+5.Then migrate the database using these commands:
     - python manage.py makemigrations
     - python manage.py migrate
-6. Create a superuser to have access to the admin page:
+6.Create a superuser to have access to the admin page:
     - pyhton manage.py createsuperuser --username=yourusername --email=youremail@gmail.com
     - replace the yourusername and youremail with the username and email you want to use
-7. Finally run the project using this command: 👏
+7.Finally run the project using this command: 👏
     - python manage.py runserver
 
 
