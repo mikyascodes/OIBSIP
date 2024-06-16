@@ -22,7 +22,9 @@ In this last task, we were tasked with implementing a simple user authentication
 ### ⚙️How to run the Django(Python) projects
 <ol>
 <li> Clone the repository </li><br>
-    git clone https://github.com/mikyascodes/OIBSIP.git
+    <ul>
+    <li>git clone https://github.com/mikyascodes/OIBSIP.git</li>
+    </ul>
 <li> Change directory to either Task3/project_name or Task4/project_name folder which ever one project you are  trying to run.</li>
 <li> Install virtual environment by running these commnds:</li>
     <ul>
