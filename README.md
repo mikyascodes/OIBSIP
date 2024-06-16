@@ -20,23 +20,35 @@ In this last task, we were tasked with implementing a simple user authentication
 ![authentication-demo](Assets\Screenshot (1).png)
 
 ### ⚙️How to run the Django(Python) projects
-1. Clone the repository 
+<ol>
+<li> Clone the repository </li><br>
     git clone https://github.com/mikyascodes/OIBSIP.git
-2. Change directory to either Task3/project_name or Task4/project_name folder which ever one project you are  trying to run.  
-3. Install virtual environment by running these commnds:
-    -pip install virtualenv
-    -virtualenv env
-    -env\Scripts\activate.bat
-4. Once the virtual enviroment is installed and activated, install the project requirements using this command:
-    -pip install -r requirements.txt
-5. Then migrate the database using these commands:
-    - python manage.py makemigrations
-    - python manage.py migrate
-6. Create a superuser to have access to the admin page:
-    - pyhton manage.py createsuperuser --username=yourusername --email=youremail@gmail.com
-    - replace the yourusername and youremail with the username and email you want to use
-7. Finally run the project using this command: 👏
-    - python manage.py runserver
+<li> Change directory to either Task3/project_name or Task4/project_name folder which ever one project you are  trying to run.</li>
+<li> Install virtual environment by running these commnds:</li>
+    <ul>
+    <li>pip install virtualenv</li>
+    <li>virtualenv env</li>
+    <li>env\Scripts\activate.bat</li>
+    </ul>
+<li> Once the virtual enviroment is installed and activated, install the project requirements using this command:</li>
+    <ul>
+    <li>pip install -r requirements.txt</li>
+    </ul>
+<li>Then migrate the database using these commands:</li>
+    <ul>
+    <li>python manage.py makemigrations</li>
+    <li>python manage.py migrate</li>
+    </ul>
+<li>Create a superuser to have access to the admin page:</li>
+    <ul>
+    <li>pyhton manage.py createsuperuser --username=yourusername --email=youremail@gmail.com</li>
+    <li>replace the yourusername and youremail with the username and email you want to use</li>
+    </ul>
+<li>Finally run the project using this command: 👏</li>
+    <ul>
+    <li>python manage.py runserver</li>
+    </ul>
+</ol>
 
 
 
