@@ -21,7 +21,7 @@ In this last task, we were tasked with implementing a simple user authentication
 
 ### ⚙️How to run the Django(Python) projects
 <ol>
-<li> Clone the repository </li><br>
+<li> Clone the repository </li>
     <ul>
     <li>git clone https://github.com/mikyascodes/OIBSIP.git</li>
     </ul>
